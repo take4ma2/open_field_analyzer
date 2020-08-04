@@ -1,0 +1,17 @@
+OpenFieldAnalyzer Ver. 1.0.0
+***        Parameters          ***
+  Arena height:          40.0(cm)
+  Arena width:           40.0(cm)
+  ROI height:            120.0(pixels)
+  ROI width:             120.0(pixels)
+  Center region:         40.0(%)
+  Block layout(rows):    5(-)
+  Block layout(columns): 5(-)
+  Duration:              1200(sec.)
+  Frame rate:            2(fps)
+  Motion criteria:       4.0(cm/sec.)
+
+*** Centre region definitions. ***
+  Coordinates[pixel]: (22.05,22.05), (97.95,22.05), (97.95, 97.95), (22.05,97.95)
+  Length:             75.89[pixels]
+  Area:               5760.0[pixels^2]
