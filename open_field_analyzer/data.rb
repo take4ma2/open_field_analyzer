@@ -231,12 +231,12 @@ module OpenFieldAnalyzer
         'Animal', 'Distance travelled 5',
         'Distance travelled 10', 'Distance travelled 15',
         'Distance travelled 20', 'Whole arena resting time',
-        'Whole arena performance time', 'Whole area average speed',
-        'Periphery distance traveled', 'Periphery resting time',
-        'Periphery performance time', 'Periphery average speed',
-        'Centre distance traveled', 'Centre resting time',
-        'Centre performance time', 'Centre average speed',
-        'Latency to centre entry', 'Number of centre entry',
+        'Whole arena permanence time', 'Whole arena average speed',
+        'Periphery distance travelled', 'Periphery resting time',
+        'Periphery permanence time', 'Periphery average speed',
+        'Center distance travelled', 'Center resting time',
+        'Center permanence time', 'Center average speed',
+        'Latency to center entry', 'Number of center entries',
         'Distance travelled - total', 'Percentage center time'
       ]
     end
