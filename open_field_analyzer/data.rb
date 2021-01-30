@@ -272,12 +272,34 @@ module OpenFieldAnalyzer
       perform_all = performance_time(0, Center::DURATION)
       perform_in_center = performance_time_in_center(0, Center::DURATION)
       perform_in_peripheral = performance_time_in_peripheral(0, Center::DURATION)
+      distance_traveled_5 = Center::DURATION >= 300 ? total_move(0, 300) : total_move(0, Center::DURATION)
+      distance_traveled_10 = if Center::DURATION < 300
+                               0.0
+                             elsif Center::DURATION >= 300 && Center::DURATION <= 600
+                               total_move(300, Center::DURATION)
+                             else
+                               total_move(300, 600)
+                             end
+      distance_traveled_15 = if Center::DURATION < 600
+                               0.0
+                             elsif Center::DURATION >= 600 && Center::DURATION <= 900
+                               total_move(600, Center::DURATION)
+                             else
+                               total_move(600, 900)
+                             end
+      distance_traveled_20 = if Center::DURATION < 900
+                               0.0
+                             elsif Center::DURATION >= 900 && Center::DURATION <= 1200
+                               total_move(900, Center::DURATION)
+                             else
+                               total_move(900, 1200)
+                             end
       {
         subject_id: @subject_id,
-        distance_traveled_5: total_move(0, 300),
-        distance_traveled_10: total_move(300, 600),
-        distance_traveled_15: total_move(600, 900),
-        distance_traveled_20: total_move(900, Center::DURATION),
+        distance_traveled_5: distance_traveled_5,
+        distance_traveled_10: distance_traveled_10,
+        distance_traveled_15: distance_traveled_15,
+        distance_traveled_20: distance_traveled_20,
         whole_arena_resting_time: resting_time(0, Center::DURATION),
         whole_arena_performance_time: perform_all,
         whole_area_average_speed: allmove/Center::DURATION.to_f,

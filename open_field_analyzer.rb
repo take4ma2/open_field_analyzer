@@ -1,24 +1,13 @@
 require 'csv'
 require 'fileutils'
+require 'yaml'
+require './constants'
 require './file_search'
 require './open_field_analyzer/data'
 
 module OpenFieldAnalyzer
-  module Parameters
-    ARENA_X = 40.0      # Open Field Arena X size[cm]
-    ARENA_Y = 40.0      # Open Field Arena Y size[cm]
-    ROI_X = 120.0       # ROI X size[pixcels]
-    ROI_Y = 120.0       # ROI Y size[pixcels]
-    CENTER_AREA = 40.0  # Center region definition[%] (% of Rectangle area compare with arena whole area).
-    BLOCK_ROWS = 5      # Arena division number for vertical axis.
-    BLOCK_COLUMNS = 5   # Arena division number for horizontal axis.
-    DURATION = 1200     # Duration of experiment[sec.]
-    FRAME_RATE = 2      # Frame rate[fps]
-    MOTION_CRITERIA=4.0 # If subject moves more than MOTION_CRITERIA, status is 'moved', else 'rested'.[cm/s]
-  end
-
   class Center
-    include Parameters
+    include Constants
     attr_reader :area
     attr_reader :length
     attr_reader :left
@@ -78,7 +67,7 @@ module OpenFieldAnalyzer
       return false if @data.empty?
       CSV.open(@file_search.output_filename, 'w') do |csv|
         csv << @data[0].result_headers
-        @data.sort { |a, b| a.subject_id <=> b.subject_id }.each { |datum| csv << datum.result_array }
+        @data.sort { |a, b| a.subject_id <=> b.subject_id }.each { |subject| csv << subject.result_array }
       end
     end
 
@@ -109,7 +98,8 @@ module OpenFieldAnalyzer
 
     def self.VERSION
       #"1.0.0"
-      "1.1.0(Incldes file search module and assigns output file name)"
+      #"1.1.0(Incldes file search module and assigns output file name)"
+      "1.2.0(Accept short DURATION)"
     end
     private
 
